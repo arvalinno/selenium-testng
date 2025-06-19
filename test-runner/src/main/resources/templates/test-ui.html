@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Selenium Test Runner</title>
+    <link rel="stylesheet" type="text/css" href="/css/test-ui.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Selenium Test Runner</h1>
+
+    <div class="test-info">
+        <p>This will execute a simple automated test on <strong>saucedemo.com</strong>.</p>
+        <p><strong>Test case:</strong> Login with standard credentials</p>
+        <div class="example">
+<pre>
+1. Open https://www.saucedemo.com/
+2. Enter username: standard_user
+3. Enter password: secret_sauce
+4. Click Login
+5. Verify redirected to Products page
+</pre>
+        </div>
+    </div>
+
+    <form action="/start-test" method="post" th:object="${testForm}">
+        <button type="submit">🚀 Start Test</button>
+    </form>
+
+</body>
+</html>
