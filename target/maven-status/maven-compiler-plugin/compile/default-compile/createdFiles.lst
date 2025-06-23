@@ -1,5 +1,7 @@
-com/example/SeleniumTestRunner.class
-com/example/SauceDemoTest.class
+com/example/tests/SauceDemoTest.class
+com/example/controller/TestController$LogController.class
 com/example/SpringSeleniumApp.class
+com/example/listener/TestLogListener.class
+com/example/runner/SauceDemoTestRunner.class
 com/example/controller/TestController.class
 com/example/ThreadPoolConfig.class

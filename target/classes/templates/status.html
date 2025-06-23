@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test Status</title>
+    <link rel="stylesheet" type="text/css" href="/css/test-ui.css" />
+</head>
+<body>
+<div class="container">
+    <h1>🧪 Test Progress</h1>
+    <p>Test ID: <span th:text="${testId}"></span></p>
+
+    <div id="logOutput" style="display: none;"></div>
+
+    <div id="statusContainer">
+        <div class="spinner"></div>
+        <p id="status">Running test...</p>
+    </div>
+
+</div>
+
+<input type="hidden" id="test-id" th:value="${testId}" />
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const testId = document.getElementById("test-id").value;
+    console.log("tesses : ", testId)
+
+    function checkStatus() {
+        fetch("/test-result?id=" + testId)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === "PENDING") {
+                    setTimeout(checkStatus, 2000);
+                } else {
+                    if (data.log) {
+                        const logDiv = document.getElementById("logOutput");
+                        logDiv.innerText = data.log;
+                        logDiv.style.display = "block";
+                    }
+
+                    document.getElementById("statusContainer").style.display = "none";
+
+                    const resultMessage =
+                        data.status === "PASS" ? "✅ Test Passed" :
+                        data.status === "FAIL" ? "❌ Test Failed" :
+                        "❓ Unknown Status";
+
+                    const resultPara = document.createElement("p");
+                    resultPara.textContent = resultMessage;
+                    resultPara.style.fontSize = "24px";
+                    resultPara.style.fontWeight = "bold";
+                    resultPara.style.marginTop = "20px";
+                    document.querySelector(".container").appendChild(resultPara);
+                }
+            });
+            fetch("/test-log/loginTest")
+            .then(res => res.text())
+            .then(console.log); // or display in UI    
+    }
+
+    checkStatus();
+    /*]]>*/
+
+    
+</script>
+</body>
+</html>
