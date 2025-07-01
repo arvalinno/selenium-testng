@@ -1,6 +1,9 @@
 /Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/SpringSeleniumApp.java
 /Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/ThreadPoolConfig.java
 /Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/controller/TestController.java
+/Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/listener/ResultCollectorListener.java
 /Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/listener/TestLogListener.java
 /Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/runner/SauceDemoTestRunner.java
-/Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/tests/SauceDemoTest.java
+/Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/tests/BaseTest.java
+/Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/tests/HomePage.java
+/Users/arvalinno/Documents/Automation qa project/selenium-testNg/src/main/java/com/example/tests/LoginPage.java

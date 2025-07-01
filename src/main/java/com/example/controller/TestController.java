@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.listener.ResultCollectorListener;
 import com.example.listener.TestLogListener;
 import com.example.runner.SauceDemoTestRunner;
 
@@ -28,7 +29,7 @@ public class TestController {
         String testId = UUID.randomUUID().toString();
         testResults.put(testId, "PENDING");
 
-        new Thread(() -> {
+       
         System.out.println("heererererere1");
 
             try {
@@ -37,7 +38,6 @@ public class TestController {
             } catch (Exception e) {
                 testResults.put(testId, "FAIL");
             }
-        }).start();
 
         model.addAttribute("testId", testId);
         return "status";
@@ -50,6 +50,15 @@ public class TestController {
         String log = testLogs.getOrDefault(id, "");
 
         return Map.of("status", result, "log", log);
+    }
+
+    @GetMapping("/test-results")
+    @ResponseBody
+    public Map<String, Object> getTestResults() {
+        return Map.of(
+            "summary", ResultCollectorListener.getSummary(),
+            "status", ResultCollectorListener.failedTests.isEmpty() ? "PASS" : "FAIL"
+        );
     }
 
     @RestController

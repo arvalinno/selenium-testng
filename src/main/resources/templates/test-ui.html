@@ -22,9 +22,20 @@
         </div>
     </div>
 
-    <form action="/start-test" method="post" th:object="${testForm}">
+    <form action="/start-test" method="post" th:object="${testForm}" onsubmit="showSpinner(this)">
         <button type="submit">🚀 Start Test</button>
     </form>
 
+    <script>
+        function showSpinner(form) {
+          const btn = form.querySelector("button[type='submit']");
+          btn.disabled = true;
+          btn.innerHTML = ` <div id="statusContainer">
+        <div class="spinner"></div>
+        <p id="status">Running test...</p>
+    </div>`;
+        }
+    </script>
+      
 </body>
 </html>

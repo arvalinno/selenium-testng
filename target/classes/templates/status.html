@@ -11,12 +11,9 @@
 
     <div id="logOutput" style="display: none;"></div>
 
-    <div id="statusContainer">
-        <div class="spinner"></div>
-        <p id="status">Running test...</p>
-    </div>
-
 </div>
+
+<div id="testResults"></div>
 
 <input type="hidden" id="test-id" th:value="${testId}" />
 <script th:inline="javascript">
@@ -24,40 +21,63 @@
     const testId = document.getElementById("test-id").value;
     console.log("tesses : ", testId)
 
-    function checkStatus() {
-        fetch("/test-result?id=" + testId)
+    function checkStatusEachTest() {
+        console.log("helow here");
+        fetch("/test-results")
             .then(res => res.json())
             .then(data => {
-                if (data.status === "PENDING") {
-                    setTimeout(checkStatus, 2000);
-                } else {
-                    if (data.log) {
-                        const logDiv = document.getElementById("logOutput");
-                        logDiv.innerText = data.log;
-                        logDiv.style.display = "block";
-                    }
+                const summary = data.summary;
+                const container = document.getElementById("testResults");
 
-                    document.getElementById("statusContainer").style.display = "none";
-
-                    const resultMessage =
-                        data.status === "PASS" ? "✅ Test Passed" :
-                        data.status === "FAIL" ? "❌ Test Failed" :
-                        "❓ Unknown Status";
-
-                    const resultPara = document.createElement("p");
-                    resultPara.textContent = resultMessage;
-                    resultPara.style.fontSize = "24px";
-                    resultPara.style.fontWeight = "bold";
-                    resultPara.style.marginTop = "20px";
-                    document.querySelector(".container").appendChild(resultPara);
+                // If no tests are finished yet, keep checking
+                if (
+                    (!summary.passed || summary.passed.length === 0) &&
+                    (!summary.failed || summary.failed.length === 0) &&
+                    (!summary.skipped || summary.skipped.length === 0)
+                ) {
+                    container.innerHTML = `<p>⏳ Running tests...</p>`;
+                    setTimeout(checkStatusEachTest, 2000);
+                    return;
                 }
+
+                // Build HTML table
+                let html = `<h3>🧪 Test Results</h3>`;
+                html += `<table border="1" cellpadding="8" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Test Name</th>
+                                    <th>Class</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+
+                const renderRow = (test, statusEmoji) => `
+                    <tr>
+                        <td>${statusEmoji} ${test.status}</td>
+                        <td>${test.name}</td>
+                        <td>${test.class}</td>
+                    </tr>
+                `;
+
+                summary.passed.forEach(test => {
+                    html += renderRow(test, "✅");
+                });
+
+                summary.failed.forEach(test => {
+                    html += renderRow(test, "❌");
+                });
+
+                summary.skipped.forEach(test => {
+                    html += renderRow(test, "⚠️");
+                });
+
+                html += `</tbody></table>`;
+                container.innerHTML = html;
             });
-            fetch("/test-log/loginTest")
-            .then(res => res.text())
-            .then(console.log); // or display in UI    
     }
 
-    checkStatus();
+    checkStatusEachTest();
     /*]]>*/
 
     
