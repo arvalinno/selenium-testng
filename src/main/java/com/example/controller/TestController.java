@@ -23,24 +23,24 @@ public class TestController {
         return "test-ui";
     }
 
-    @PostMapping("/start-test")
-    public String startTest(Model model) {
+    @GetMapping("/start-test")
+    @ResponseBody
+    public Map<String, Object> startTest() {
         System.out.println("heererererere");
-        String testId = UUID.randomUUID().toString();
-        testResults.put(testId, "PENDING");
+        // String testId = UUID.randomUUID().toString();
+        // testResults.put(testId, "PENDING");
 
-       
-        System.out.println("heererererere1");
+        try {
+            boolean result = SauceDemoTestRunner.run();
+            
+        } catch (Exception e) {
+            
+        }
 
-            try {
-                boolean result = SauceDemoTestRunner.run();
-                testResults.put(testId, result ? "PASS" : "FAIL");
-            } catch (Exception e) {
-                testResults.put(testId, "FAIL");
-            }
-
-        model.addAttribute("testId", testId);
-        return "status";
+        return Map.of(
+            "summary", ResultCollectorListener.getSummary(),
+            "status", ResultCollectorListener.failedTests.isEmpty() ? "PASS" : "FAIL"
+        );
     }
 
     @GetMapping("/test-result")

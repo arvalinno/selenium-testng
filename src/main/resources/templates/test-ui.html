@@ -1,41 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Selenium Test Runner</title>
-    <link rel="stylesheet" type="text/css" href="/css/test-ui.css" />
-</head>
-<body>
-<div class="container">
-    <h1>Selenium Test Runner</h1>
-
-    <div class="test-info">
-        <p>This will execute a simple automated test on <strong>saucedemo.com</strong>.</p>
-        <p><strong>Test case:</strong> Login with standard credentials</p>
-        <div class="example">
-<pre>
+   <head>
+      <title>Selenium Test Runner</title>
+      <link rel="stylesheet" type="text/css" href="/css/test-ui.css" />
+   </head>
+   <body>
+      <div class="container">
+      <h1>Selenium Test Runner</h1>
+      <div class="test-info">
+         <p>This will execute a simple automated test on <strong>saucedemo.com</strong>.</p>
+         <p><strong>Test case:</strong> Login with standard credentials</p>
+         <div class="example">
+            <pre>
 1. Open https://www.saucedemo.com/
 2. Enter username: standard_user
 3. Enter password: secret_sauce
 4. Click Login
 5. Verify redirected to Products page
 </pre>
-        </div>
-    </div>
+         </div>
+      </div>
+      <button id="startButton" type="submit" onclick="startTest()">
+        🚀 Start Test <span id="spinner" class="loader" style="display: none;"></span>
+     </button>
 
-    <form action="/start-test" method="post" th:object="${testForm}" onsubmit="showSpinner(this)">
-        <button type="submit">🚀 Start Test</button>
-    </form>
+      <div id="testResults"></div>
+      <input type="hidden" id="test-id" th:value="${testId}" />
+      <script th:inline="javascript">
+         /*<![CDATA[*/
+        //  const testId = document.getElementById("test-id").value;
+        //  console.log("tesses : ", testId)
+         
+        function startTest() {
+            const button = document.getElementById("startButton");
+            const spinner = document.getElementById("spinner");
 
-    <script>
-        function showSpinner(form) {
-          const btn = form.querySelector("button[type='submit']");
-          btn.disabled = true;
-          btn.innerHTML = ` <div id="statusContainer">
-        <div class="spinner"></div>
-        <p id="status">Running test...</p>
-    </div>`;
+            spinner.style.display = "inline-block";
+            button.disabled = true;
+
+            fetch("/start-test")
+                .then(res => res.json())
+                .then(data => {
+                    const summary = data.summary;
+                    const container = document.getElementById("testResults");
+
+                    if (
+                        (!summary.passed || summary.passed.length === 0) &&
+                        (!summary.failed || summary.failed.length === 0) &&
+                        (!summary.skipped || summary.skipped.length === 0)
+                    ) {
+                        container.innerHTML = `<p>⏳ Running tests...</p>`;
+                        setTimeout(startTest, 2000);
+                        return;
+                    }
+
+                    let html = `<h3>🧪 Test Results</h3>`;
+                    html += `<table border="1" cellpadding="8" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Status</th>
+                                        <th>Test Name</th>
+                                        <th>Class</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+
+                    const renderRow = (test, emoji) => `
+                        <tr>
+                            <td>${emoji} ${test.status}</td>
+                            <td>${test.name}</td>
+                            <td>${test.class}</td>
+                        </tr>`;
+
+                    summary.passed.forEach(t => html += renderRow(t, "✅"));
+                    summary.failed.forEach(t => html += renderRow(t, "❌"));
+                    summary.skipped.forEach(t => html += renderRow(t, "⚠️"));
+                    html += `</tbody></table>`;
+
+                    container.innerHTML = html;
+                    spinner.style.display = "none";
+                    button.disabled = false;
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    spinner.style.display = "none";
+                    button.disabled = false;
+                });
         }
-    </script>
-      
-</body>
+
+        //  startTest();
+         /*]]>*/
+         
+         
+      </script>
+   </body>
 </html>
