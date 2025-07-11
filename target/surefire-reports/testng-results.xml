@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-11T11:30:16 WIB" name="Surefire suite" finished-at="2025-07-11T11:30:21 WIB" duration-ms="5721">
+    <groups>
+    </groups>
+    <test started-at="2025-07-11T11:30:16 WIB" name="Surefire test" finished-at="2025-07-11T11:30:21 WIB" duration-ms="5721">
+      <class name="com.example.HomePageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.HomePageTest@209da20d]" started-at="2025-07-11T11:30:16 WIB" name="setUp" finished-at="2025-07-11T11:30:18 WIB" duration-ms="2529" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="itemCardsSuccessShow()[pri:0, instance:com.example.HomePageTest@209da20d]" started-at="2025-07-11T11:30:18 WIB" name="itemCardsSuccessShow" finished-at="2025-07-11T11:30:18 WIB" duration-ms="406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itemCardsSuccessShow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.HomePageTest@209da20d]" started-at="2025-07-11T11:30:18 WIB" name="tearDown" finished-at="2025-07-11T11:30:19 WIB" duration-ms="189" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.HomePageTest -->
+      <class name="com.example.LoginPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.LoginPageTest@7d4f9aae]" started-at="2025-07-11T11:30:19 WIB" name="setUp" finished-at="2025-07-11T11:30:21 WIB" duration-ms="2013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="loginSuccessTest()[pri:0, instance:com.example.LoginPageTest@7d4f9aae]" started-at="2025-07-11T11:30:21 WIB" name="loginSuccessTest" finished-at="2025-07-11T11:30:21 WIB" duration-ms="387" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSuccessTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.LoginPageTest@7d4f9aae]" started-at="2025-07-11T11:30:21 WIB" name="tearDown" finished-at="2025-07-11T11:30:21 WIB" duration-ms="165" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.LoginPageTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

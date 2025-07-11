@@ -1,9 +1,10 @@
-package com.example.tests;
+package com.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.TestNG;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -19,8 +20,8 @@ public abstract class BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
 
-        driver = new ChromeDriver(options);
-        // driver = new ChromeDriver();
+        // driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
     }
 
