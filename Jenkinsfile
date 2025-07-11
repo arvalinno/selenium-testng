@@ -6,13 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/arvalinno/selenium-testng.git'
-            }
-        }
-
         stage('Build & Test') {
             steps {
                 sh 'mvn clean test'
