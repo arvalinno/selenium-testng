@@ -18,15 +18,16 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            junit '**/target/surefire-reports/*.xml' // optional for test tab
+}
 
-            publishHTML([
-                reportDir: 'target/surefire-reports',
-                reportFiles: 'emailable-report.html',
-                reportName: 'TestNG Report'
-            ])
-        }
+post {
+    always {
+        junit '**/target/surefire-reports/*.xml' // optional for test tab
+
+        publishHTML([
+            reportDir: 'target/surefire-reports',
+            reportFiles: 'emailable-report.html',
+            reportName: 'TestNG Report'
+        ])
     }
 }
