@@ -12,6 +12,14 @@ pipeline {
             }
         }
 
+        stage('Deploy - Option 1') {
+            steps {
+                echo 'Running Spring Boot inside Jenkins container'
+                sh 'pkill -f your-app.jar || true' // cleanup from previous builds
+                sh 'nohup java -jar target/your-app.jar > app.log 2>&1 &'
+            }
+        }
+
         stage('Results') {
             steps {
                 echo 'Publishing test results...'
