@@ -21,8 +21,12 @@ pipeline {
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml' // for Jenkins test summary
+            junit '**/target/surefire-reports/*.xml'
+
             publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
                 reportDir: 'target/surefire-reports',
                 reportFiles: 'emailable-report.html',
                 reportName: 'TestNG Report'
