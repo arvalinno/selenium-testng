@@ -12,8 +12,8 @@
       </class> <!-- com.example.LoginPageTest -->
       <class name="com.example.HomePageTest">
         <methods>
-          <include name="setUp"/>
           <include name="itemCardsSuccessShow"/>
+          <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.example.HomePageTest -->

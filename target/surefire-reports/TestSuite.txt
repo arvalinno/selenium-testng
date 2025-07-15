@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 2, Errors: 0, Skipped: 4, Time elapsed: 0.907 s <<< FAILURE! -- in TestSuite
-com.example.HomePageTest.setUp -- Time elapsed: 0.762 s <<< FAILURE!
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 4, Time elapsed: 0.929 s <<< FAILURE! -- in TestSuite
+com.example.HomePageTest.setUp -- Time elapsed: 0.797 s <<< FAILURE!
 org.openqa.selenium.SessionNotCreatedException: 
 Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
 Host info: host: 'C02G738AMD6P', ip: 'fe80:0:0:0:1855:3559:75dd:6577%en0'
@@ -105,7 +105,7 @@ Caused by: java.nio.channels.UnresolvedAddressException
 	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
 	... 36 more
 
-com.example.LoginPageTest.setUp -- Time elapsed: 0.010 s <<< FAILURE!
+com.example.LoginPageTest.setUp -- Time elapsed: 0.009 s <<< FAILURE!
 org.openqa.selenium.SessionNotCreatedException: 
 Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
 Host info: host: 'C02G738AMD6P', ip: 'fe80:0:0:0:1855:3559:75dd:6577%en0'

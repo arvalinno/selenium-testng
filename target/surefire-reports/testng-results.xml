@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="2" passed="0" failed="0" skipped="2">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-14T18:19:16 WIB" name="Surefire suite" finished-at="2025-07-14T18:19:16 WIB" duration-ms="497">
+  <suite started-at="2025-07-15T11:22:55 WIB" name="Surefire suite" finished-at="2025-07-15T11:22:56 WIB" duration-ms="539">
     <groups>
     </groups>
-    <test started-at="2025-07-14T18:19:16 WIB" name="Surefire test" finished-at="2025-07-14T18:19:16 WIB" duration-ms="497">
+    <test started-at="2025-07-15T11:22:55 WIB" name="Surefire test" finished-at="2025-07-15T11:22:56 WIB" duration-ms="539">
       <class name="com.example.HomePageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.HomePageTest@6392827e]" started-at="2025-07-14T18:19:16 WIB" name="setUp" finished-at="2025-07-14T18:19:16 WIB" duration-ms="445" status="FAIL">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.HomePageTest@5d0a1059]" started-at="2025-07-15T11:22:55 WIB" name="setUp" finished-at="2025-07-15T11:22:56 WIB" duration-ms="499" status="FAIL">
           <exception class="org.openqa.selenium.SessionNotCreatedException">
             <message>
               <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
@@ -125,7 +125,7 @@ at java.base/java.security.AccessController.doPrivileged(Unknown Source)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="itemCardsSuccessShow()[pri:0, instance:com.example.HomePageTest@6392827e]" started-at="2025-07-14T18:19:16 WIB" name="itemCardsSuccessShow" finished-at="2025-07-14T18:19:16 WIB" duration-ms="0" status="SKIP">
+        <test-method signature="itemCardsSuccessShow()[pri:0, instance:com.example.HomePageTest@5d0a1059]" started-at="2025-07-15T11:22:56 WIB" name="itemCardsSuccessShow" finished-at="2025-07-15T11:22:56 WIB" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.SessionNotCreatedException">
             <message>
               <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
@@ -243,13 +243,13 @@ at java.base/java.security.AccessController.doPrivileged(Unknown Source)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- itemCardsSuccessShow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.HomePageTest@6392827e]" started-at="2025-07-14T18:19:16 WIB" name="tearDown" finished-at="2025-07-14T18:19:16 WIB" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.HomePageTest@5d0a1059]" started-at="2025-07-15T11:22:56 WIB" name="tearDown" finished-at="2025-07-15T11:22:56 WIB" duration-ms="0" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.example.HomePageTest -->
       <class name="com.example.LoginPageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.LoginPageTest@53aac487]" started-at="2025-07-14T18:19:16 WIB" name="setUp" finished-at="2025-07-14T18:19:16 WIB" duration-ms="6" status="FAIL">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.LoginPageTest@73e9cf30]" started-at="2025-07-15T11:22:56 WIB" name="setUp" finished-at="2025-07-15T11:22:56 WIB" duration-ms="5" status="FAIL">
           <exception class="org.openqa.selenium.SessionNotCreatedException">
             <message>
               <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
@@ -367,7 +367,7 @@ at java.base/java.security.AccessController.doPrivileged(Unknown Source)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="loginSuccessTest()[pri:0, instance:com.example.LoginPageTest@53aac487]" started-at="2025-07-14T18:19:16 WIB" name="loginSuccessTest" finished-at="2025-07-14T18:19:16 WIB" duration-ms="0" status="SKIP">
+        <test-method signature="loginSuccessTest()[pri:0, instance:com.example.LoginPageTest@73e9cf30]" started-at="2025-07-15T11:22:56 WIB" name="loginSuccessTest" finished-at="2025-07-15T11:22:56 WIB" duration-ms="0" status="SKIP">
           <exception class="org.openqa.selenium.SessionNotCreatedException">
             <message>
               <![CDATA[Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure. 
@@ -485,7 +485,7 @@ at java.base/java.security.AccessController.doPrivileged(Unknown Source)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginSuccessTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.LoginPageTest@53aac487]" started-at="2025-07-14T18:19:16 WIB" name="tearDown" finished-at="2025-07-14T18:19:16 WIB" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.LoginPageTest@73e9cf30]" started-at="2025-07-15T11:22:56 WIB" name="tearDown" finished-at="2025-07-15T11:22:56 WIB" duration-ms="0" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
