@@ -17,16 +17,10 @@ pipeline {
             }
         }
 
-        stage('Test Result') {
-            steps {
-                echo 'Publishing test results...'
-            }
-        }
-
         stage('Build JAR') {
             steps {
                 // Build the Selenium TestNG artifact
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn package -DskipTests'
             }
         }
 
