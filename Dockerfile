@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /selenium-testng
 
 # Copy the built JAR and name it selenium-testng.jar
-COPY target/selenium-testng.jar selenium-testng.jar
+COPY target/*.jar selenium-testng.jar
 
 # Expose the port your Spring Boot API listens on
 EXPOSE 8080
