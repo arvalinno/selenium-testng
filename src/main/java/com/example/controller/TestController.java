@@ -26,16 +26,10 @@ public class TestController {
     @GetMapping("/start-test")
     @ResponseBody
     public Map<String, Object> startTest() {
-        System.out.println("heererererere");
         // String testId = UUID.randomUUID().toString();
         // testResults.put(testId, "PENDING");
 
-        try {
-            boolean result = SauceDemoTestRunner.run();
-            
-        } catch (Exception e) {
-            
-        }
+        SauceDemoTestRunner.run();
 
         return Map.of(
             "summary", ResultCollectorListener.getSummary(),
