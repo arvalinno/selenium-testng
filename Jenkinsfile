@@ -5,6 +5,11 @@ pipeline {
         maven 'Maven 3.9.10'
     }
 
+    environment {
+        IMAGE_NAME = 'selenium-testng'
+        TAG        = 'latest'
+    }
+
     stages {
         stage('Build & Test') {
             steps {
@@ -12,19 +17,40 @@ pipeline {
             }
         }
 
-        stage('Deploy - Option 1') {
-            steps {
-                echo 'Running Spring Boot inside Jenkins container'
-                sh 'pkill -f your-app.jar || true' // cleanup from previous builds
-                sh 'nohup java -jar target/your-app.jar > app.log 2>&1 &'
-            }
-        }
-
-        stage('Results') {
+        stage('Test Result') {
             steps {
                 echo 'Publishing test results...'
             }
         }
+
+        stage('Build JAR') {
+            steps {
+                // Build the Selenium TestNG artifact
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                // Build Docker image named selenium-testng:latest
+                sh 'docker build -t ${IMAGE_NAME}:${TAG} .'
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                // Stop and remove any existing container, then run new one
+                sh '''
+                docker stop ${IMAGE_NAME} || true
+                docker rm ${IMAGE_NAME}   || true
+                docker run -d \
+                    --name ${IMAGE_NAME} \
+                    -p 8081:8080 \
+                    ${IMAGE_NAME}:${TAG}
+                '''
+            }
+        }
+
     }
 
     post {
@@ -39,6 +65,8 @@ pipeline {
                 reportFiles: 'emailable-report.html',
                 reportName: 'TestNG Report'
             ])
+
+            echo "Pipeline completed"
         }
     }
 }
