@@ -26,7 +26,6 @@ public abstract class BaseTest {
         try {
             options = new ChromeOptions();
             driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-            System.out.println("herer loll");
         } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException("Invalid Selenium Grid URL");
