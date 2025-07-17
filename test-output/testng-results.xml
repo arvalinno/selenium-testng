@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
+  <suite started-at="2025-07-17T11:20:20 WIB" name="SauceSuite" finished-at="2025-07-17T11:20:27 WIB" duration-ms="7355">
+    <groups>
+    </groups>
+    <test started-at="2025-07-17T11:20:20 WIB" name="SimpleTest" finished-at="2025-07-17T11:20:27 WIB" duration-ms="7355">
+      <class name="com.example.tests.LoginPage">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.tests.LoginPage@3aabe7f7]" started-at="2025-07-17T11:20:24 WIB" name="setUp" finished-at="2025-07-17T11:20:27 WIB" duration-ms="2819" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="loginSuccessTest()[pri:0, instance:com.example.tests.LoginPage@3aabe7f7]" started-at="2025-07-17T11:20:27 WIB" name="loginSuccessTest" finished-at="2025-07-17T11:20:27 WIB" duration-ms="377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginSuccessTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.tests.LoginPage@3aabe7f7]" started-at="2025-07-17T11:20:27 WIB" name="tearDown" finished-at="2025-07-17T11:20:27 WIB" duration-ms="127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.tests.LoginPage -->
+      <class name="com.example.tests.HomePage">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.tests.HomePage@2da1e59d]" started-at="2025-07-17T11:20:20 WIB" name="setUp" finished-at="2025-07-17T11:20:23 WIB" duration-ms="3381" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="itemCardsSuccessShow()[pri:0, instance:com.example.tests.HomePage@2da1e59d]" started-at="2025-07-17T11:20:23 WIB" name="itemCardsSuccessShow" finished-at="2025-07-17T11:20:24 WIB" duration-ms="417" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itemCardsSuccessShow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.example.tests.HomePage@2da1e59d]" started-at="2025-07-17T11:20:24 WIB" name="tearDown" finished-at="2025-07-17T11:20:24 WIB" duration-ms="185" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.tests.HomePage -->
+    </test> <!-- SimpleTest -->
+  </suite> <!-- SauceSuite -->
 </testng-results>

@@ -1,7 +1,13 @@
 package com.example.runner;
 
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Collections;
+import java.util.List;
+
 import org.testng.TestNG;
 
 import com.example.listener.ResultCollectorListener;
@@ -9,16 +15,21 @@ import com.example.listener.ResultCollectorListener;
 public class SauceDemoTestRunner {
     public static boolean run() {
         try {
-            URL suiteXml = SauceDemoTestRunner.class
+            InputStream is = SauceDemoTestRunner.class
                 .getClassLoader()
-                .getResource("testng.xml");
-
-            if (suiteXml == null) {
-                throw new RuntimeException("❌ testng.xml not found in classpath");
+                .getResourceAsStream("testng.xml");
+            if (is == null) {
+                throw new RuntimeException("❌ testng.xml not found");
             }
 
+            Path tempFile = Files.createTempFile("testng", ".xml");
+            Files.copy(is, tempFile, StandardCopyOption.REPLACE_EXISTING);
+
+            System.out.println("is = " + is);
+            System.out.println("tempFile = " + tempFile);
+
             TestNG testng = new TestNG();
-            testng.setTestSuites(Collections.singletonList(suiteXml.toURI().toString()));
+            testng.setTestSuites(List.of(tempFile.toAbsolutePath().toString()));
             // testng.setDefaultSuiteName("SauceDemoSuite");
             testng.setDefaultTestName("SimpleTest");
             testng.addListener(new ResultCollectorListener());
