@@ -18,7 +18,7 @@ public class TestController {
     private final Map<String, String> testResults = new ConcurrentHashMap<>();
     private final Map<String, String> testLogs = new ConcurrentHashMap<>();
 
-    @GetMapping("/test-ui")
+    @GetMapping("/test-ui/")
     public String showTestPage(Model model) {
         return "test-ui";
     }
