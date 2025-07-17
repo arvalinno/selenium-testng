@@ -1,11 +1,9 @@
 package com.example.runner;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.Collections;
 import java.util.List;
 
 import org.testng.TestNG;

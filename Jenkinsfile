@@ -39,6 +39,7 @@ pipeline {
                 docker rm ${IMAGE_NAME}   || true
                 docker run -d \
                     --name ${IMAGE_NAME} \
+                    --network selenium-net \
                     -p 8081:8080 \
                     ${IMAGE_NAME}:${TAG}
                 '''
